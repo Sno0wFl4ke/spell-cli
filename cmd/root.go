@@ -9,7 +9,7 @@ import _ "spell/cmd/api"
 
 var rootCmd = &cobra.Command{
 	Use:   "spell",
-	Short: "Spell is a simple is dev tool for api_module operations",
+	Short: "Spell is a simple tool for dev operations",
 }
 
 func Execute() {
