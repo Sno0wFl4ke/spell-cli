@@ -1,4 +1,4 @@
-package cmd
+package api
 
 import (
 	"encoding/json"
@@ -47,5 +47,5 @@ var apiGetCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(apiGetCmd)
+	ModuleCmd.AddCommand(apiGetCmd)
 }

@@ -1,4 +1,4 @@
-package cmd
+package api
 
 import (
 	"encoding/json"
@@ -54,5 +54,5 @@ var apiDeleteCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(apiDeleteCmd)
+	ModuleCmd.AddCommand(apiDeleteCmd)
 }
