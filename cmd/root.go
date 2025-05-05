@@ -3,6 +3,8 @@ package cmd
 import (
 	"github.com/spf13/cobra"
 	"spell/cmd/api"
+	"spell/cmd/db"
+	"spell/cmd/env"
 	"spell/cmd/json"
 )
 import _ "spell/cmd/api"
@@ -21,4 +23,6 @@ func Execute() {
 func init() {
 	rootCmd.AddCommand(api.ModuleCmd)
 	rootCmd.AddCommand(json.ModuleCmd)
+	rootCmd.AddCommand(env.ModuleCmd)
+	rootCmd.AddCommand(db.ModuleCmd)
 }
