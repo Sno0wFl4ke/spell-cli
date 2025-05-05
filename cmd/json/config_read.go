@@ -10,9 +10,10 @@ import (
 )
 
 var configReadCmd = &cobra.Command{
-	Use:   "read <file>",
-	Short: "Read a json file in terminal",
-	Args:  cobra.ExactArgs(1),
+	Use:     "read <file>",
+	Short:   "Read a json file in terminal",
+	Aliases: []string{"r"},
+	Args:    cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		jsonFile, err := os.ReadFile(args[0])
 		if err != nil {

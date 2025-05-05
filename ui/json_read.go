@@ -57,6 +57,6 @@ func (m ConfigJsonModel) View() string {
 	return "" +
 		"\n" + title +
 		"\n\n" +
-		status + " Reading file " + m.File +
+		status + " File " + m.File +
 		"\n\n" + formatted + "\n"
 }
