@@ -6,7 +6,7 @@ import (
 )
 
 var (
-	titleStyle         = lipgloss.NewStyle().Background(lipgloss.Color("#FF4081")).Foreground(lipgloss.Color("#FFFFFF")).Bold(false).Padding(0, 1)
+	titleStyle         = lipgloss.NewStyle().Background(lipgloss.Color("#F50057")).Foreground(lipgloss.Color("#FFFFFF")).Bold(false).Padding(0, 1)
 	statusOKStyle      = lipgloss.NewStyle().Background(lipgloss.Color("#00E676")).Padding(0, 1)
 	statusErrorStyle   = lipgloss.NewStyle().Background(lipgloss.Color("#FF3D00")).Padding(0, 1).Foreground(lipgloss.Color("#FFFFFF"))
 	statusPendingStyle = lipgloss.NewStyle().Background(lipgloss.Color("#FFC400")).Padding(0, 1)

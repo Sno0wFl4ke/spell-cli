@@ -8,7 +8,7 @@ import (
 var (
 	statusReadJsonSuccessStyle = lipgloss.NewStyle().Background(lipgloss.Color("#00E676")).Padding(0, 1)
 	statusReadJsonErrorStyle   = lipgloss.NewStyle().Background(lipgloss.Color("#FF3D00")).Padding(0, 1).Foreground(lipgloss.Color("#FFFFFF"))
-	formattedReadJsonStyle     = lipgloss.NewStyle().Foreground(lipgloss.Color("#FF4081")).Bold(true)
+	formattedReadJsonStyle     = lipgloss.NewStyle().Foreground(lipgloss.Color("#F5F5F5")).Bold(true)
 )
 
 type ConfigJsonModel struct {
@@ -58,5 +58,5 @@ func (m ConfigJsonModel) View() string {
 		"\n" + title +
 		"\n\n" +
 		status + " File " + m.File +
-		"\n\n" + formatted + "\n"
+		"\n\n" + responseTitle.Render("JSON") + "\n" + formatted + "\n"
 }
