@@ -9,7 +9,7 @@ import (
 	"github.com/spf13/cobra"
 	"io/ioutil"
 	"net/http"
-	"spell/ui"
+	"spell/modules/api/ui"
 )
 
 var apiDeleteCmd = &cobra.Command{

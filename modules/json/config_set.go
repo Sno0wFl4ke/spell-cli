@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/spf13/cobra"
 	"os"
-	"spell/ui"
+	"spell/modules/json/ui"
 	"strings"
 )
 

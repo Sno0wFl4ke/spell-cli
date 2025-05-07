@@ -34,11 +34,11 @@ func (m ModuleModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 func (m ModuleModel) View() string {
 
-	title := titleStyle.Render("✭ SPELL CLI")
+	title := TitleStyle.Render("✭ SPELL CLI")
 	module := modelTitle.Render(m.ModuleName)
 	commands := ""
 	for _, command := range m.Commands {
-		commands += "\n" + responseTitle.Render("• "+command)
+		commands += "\n" + ResponseTitle.Render("• "+command)
 	}
 
 	return "" +

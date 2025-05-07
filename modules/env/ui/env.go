@@ -1,17 +1,9 @@
 package ui
 
 import (
-	"strings"
-
 	"github.com/charmbracelet/bubbletea"
-	"github.com/charmbracelet/lipgloss"
-)
-
-var (
-	keyStyle    = lipgloss.NewStyle().Foreground(lipgloss.Color("#FF4081")).Bold(true)
-	valueStyle  = lipgloss.NewStyle().Foreground(lipgloss.Color("#FFFFFF")).Bold(false)
-	equalsStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("#B0BEC5")).Bold(false)
-	envTitle    = lipgloss.NewStyle().Background(lipgloss.Color("#448AFF")).Bold(true).Padding(0, 1)
+	"spell/ui"
+	"strings"
 )
 
 type EnvModel struct {
@@ -53,15 +45,15 @@ func (m EnvModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func (m EnvModel) View() string {
-	title := titleStyle.Render("✭ SPELL CLI")
+	title := ui.TitleStyle.Render("✭ SPELL CLI")
 	if len(m.Variables) > 0 {
 		var styledVars []string
 		for _, envVar := range m.Variables {
 			parts := strings.SplitN(envVar, "=", 2)
 			if len(parts) == 2 {
-				key := keyStyle.Render(parts[0])
-				value := valueStyle.Render(parts[1])
-				styledVars = append(styledVars, key+equalsStyle.Render("=")+value)
+				key := ui.KeyStyle.Render(parts[0])
+				value := ui.ValueStyle.Render(parts[1])
+				styledVars = append(styledVars, key+ui.EqualsStyle.Render("=")+value)
 			}
 		}
 		varList := strings.Join(styledVars, "\n")
@@ -71,16 +63,16 @@ func (m EnvModel) View() string {
 			"\n" +
 			"File: " + m.File +
 			"\n\n" +
-			envTitle.Render("Environment Variables") + "\n" + varList + "\n"
+			ui.EnvTitle.Render("Environment Variables") + "\n" + varList + "\n"
 	}
 
 	// Render a single key-value pair
-	key := keyStyle.Render(m.Key)
-	value := valueStyle.Render(m.Value)
+	key := ui.KeyStyle.Render(m.Key)
+	value := ui.ValueStyle.Render(m.Value)
 	return "" +
 		"\n" + title +
 		"\n" +
 		"File: " + m.File + "\n \n" +
-		envTitle.Render("Environment Variable") + "\n" +
-		key + equalsStyle.Render("=") + value + "\n"
+		ui.EnvTitle.Render("Environment Variable") + "\n" +
+		key + ui.EqualsStyle.Render("=") + value + "\n"
 }

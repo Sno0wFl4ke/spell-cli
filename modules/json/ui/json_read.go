@@ -2,13 +2,7 @@ package ui
 
 import (
 	"github.com/charmbracelet/bubbletea"
-	"github.com/charmbracelet/lipgloss"
-)
-
-var (
-	statusReadJsonSuccessStyle = lipgloss.NewStyle().Background(lipgloss.Color("#00E676")).Padding(0, 1)
-	statusReadJsonErrorStyle   = lipgloss.NewStyle().Background(lipgloss.Color("#FF3D00")).Padding(0, 1).Foreground(lipgloss.Color("#FFFFFF"))
-	formattedReadJsonStyle     = lipgloss.NewStyle().Foreground(lipgloss.Color("#F5F5F5")).Bold(true)
+	"spell/ui"
 )
 
 type ConfigJsonModel struct {
@@ -44,19 +38,19 @@ func (m ConfigJsonModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 func (m ConfigJsonModel) View() string {
 
 	status := ""
-	title := titleStyle.Render("✭ SPELL CLI")
-	formatted := formattedReadJsonStyle.Render(m.Formatted)
+	title := ui.TitleStyle.Render("✭ SPELL CLI")
+	formatted := ui.FormattedReadJsonStyle.Render(m.Formatted)
 
 	if m.Status == "success" {
-		status += statusReadJsonSuccessStyle.Render(m.Status)
+		status += ui.StatusReadJsonSuccessStyle.Render(m.Status)
 	}
 	if m.Status == "error" {
-		status += statusReadJsonErrorStyle.Render(m.Status)
+		status += ui.StatusReadJsonErrorStyle.Render(m.Status)
 	}
 
 	return "" +
 		"\n" + title +
 		"\n\n" +
 		status + " File " + m.File +
-		"\n\n" + responseTitle.Render("JSON") + "\n" + formatted + "\n"
+		"\n\n" + ui.ResponseTitle.Render("JSON") + "\n" + formatted + "\n"
 }

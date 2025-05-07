@@ -1,15 +1,15 @@
-package cmd
+package modules
 
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	"spell/cmd/api"
-	"spell/cmd/db"
-	"spell/cmd/env"
-	"spell/cmd/json"
+	"spell/modules/api"
+	"spell/modules/db"
+	"spell/modules/env"
+	"spell/modules/json"
 	"spell/ui"
 )
-import _ "spell/cmd/api"
+import _ "spell/modules/api"
 
 var rootCmd = &cobra.Command{
 	Use:   "spell",

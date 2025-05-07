@@ -1,7 +1,7 @@
 package main
 
-import "spell/cmd"
+import "spell/modules"
 
 func main() {
-	cmd.Execute()
+	modules.Execute()
 }

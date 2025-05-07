@@ -9,39 +9,38 @@ import (
 	"github.com/spf13/cobra"
 	"io/ioutil"
 	"net/http"
-	"spell/ui"
+	"spell/modules/api/ui"
 	"strings"
 )
 
-var apiPatchCmd = &cobra.Command{
-	Use:   "PATCH <url> <body>",
-	Short: "Make a PATCH request to the specified URL with a JSON body",
-	Args:  cobra.ExactArgs(2),
+var apiPostCmd = &cobra.Command{
+	Use:   "POST <url> <body...>",
+	Short: "Make a POST request to the specified URL with a JSON body",
+	Args:  cobra.MinimumNArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		url := args[0]
-		body := args[1]
+		body := strings.Join(args[1:], " ")
 
-		req, err := http.NewRequest("PATCH", url, strings.NewReader(body))
-		if err != nil {
-			cmd.PrintErr("Error creating PATCH request:", err)
+		var jsonBody map[string]interface{}
+		if err := json.Unmarshal([]byte(body), &jsonBody); err != nil {
+			cmd.PrintErrln("Invalid JSON body:", err)
 			return
 		}
-		req.Header.Set("Content-Type", "application/json")
 
-		resp, err := http.DefaultClient.Do(req)
+		resp, err := http.Post(url, "application/json", strings.NewReader(body))
 		if err != nil {
-			cmd.PrintErr("Error making PATCH request:", err)
+			cmd.PrintErr("Error making POST request:", err)
 			return
 		}
 		defer resp.Body.Close()
 
-		bodyResponse, _ := ioutil.ReadAll(resp.Body)
+		responseBody, _ := ioutil.ReadAll(resp.Body)
 
 		var prettyJSON interface{}
-		err = json.Unmarshal(bodyResponse, &prettyJSON)
+		err = json.Unmarshal(responseBody, &prettyJSON)
 		var formatted string
 		if err != nil {
-			formatted = string(bodyResponse)
+			formatted = string(responseBody)
 		} else {
 			formattedBytes, _ := json.MarshalIndent(prettyJSON, "", "  ")
 			formatted = string(formattedBytes)
@@ -57,5 +56,5 @@ var apiPatchCmd = &cobra.Command{
 }
 
 func init() {
-	ModuleCmd.AddCommand(apiPatchCmd)
+	ModuleCmd.AddCommand(apiPostCmd)
 }

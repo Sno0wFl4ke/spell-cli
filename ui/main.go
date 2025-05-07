@@ -44,7 +44,7 @@ func (m MainModel) View() string {
 	version := versionStyle.Render(m.Version)
 	author := authorStyle.Render("by " + m.Author)
 
-	title := titleStyle.Render("✭ SPELL CLI")
+	title := TitleStyle.Render("✭ SPELL CLI")
 
 	return "" +
 		"\n" + title + " " + version +
