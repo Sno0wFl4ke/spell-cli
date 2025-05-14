@@ -15,6 +15,11 @@ A command line tool for small dev oprations.
 - `spell json write/w <file> <json>` - Write a json file in your terminal
   - Example: `spell json write users.json users.elliot.job "Engineer"`
 
+#### ENV module
+- `spell env get <file> <key>` - Read a key from a .env file
+- `spell env set <file> <key> <value>` - Write a key to a .env file
+- `spell env list <file>` - List all keys in a .env file
+
 more to come soon...
 
 
