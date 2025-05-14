@@ -5,7 +5,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/spf13/cobra"
 	"os"
-	"spell/ui"
+	"spell/modules/env/ui"
 )
 
 var envSetCmd = &cobra.Command{

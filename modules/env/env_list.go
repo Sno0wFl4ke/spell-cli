@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/joho/godotenv"
 	"os"
-	"spell/ui"
+	"spell/modules/env/ui"
 	"strings"
 
 	"github.com/spf13/cobra"
